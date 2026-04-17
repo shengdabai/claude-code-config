@@ -165,4 +165,175 @@ A: 检查 `~/.codex/config.toml` 中的 API Key 环境变量是否正确设置
 
 ---
 
+# 🤖 Claude Code & Codex Configuration Center
+
+This folder contains complete optimized configurations for Claude Code and Codex CLI, specially designed for programming beginners.
+
+## 📁 File Structure
+
+```
+Claude Code配置/
+├── README.md           # This documentation
+├── install.sh          # One-click installation script
+├── CLAUDE.md           # Project rules template (copy to project root)
+├── settings.json       # Claude Code advanced configuration
+├── glm.sh             # Zhipu GLM startup script
+├── kimi.sh            # Moonshot Kimi startup script
+├── setup_aliases.sh   # Shell aliases installation script
+└── codex/
+    ├── config.toml     # Codex configuration file
+    └── instructions.md # Codex custom instructions
+```
+
+## 🚀 Quick Installation
+
+### Method 1: One-Click Installation (Recommended)
+
+```bash
+cd ~/Desktop/编程/Claude\ Code配置
+chmod +x install.sh
+./install.sh
+```
+
+### Method 2: Manual Installation
+
+```bash
+# 1. Copy Claude Code configuration
+mkdir -p ~/.claude
+cp settings.json ~/.claude/
+
+# 2. Copy Codex configuration
+mkdir -p ~/.codex
+cp codex/config.toml ~/.codex/
+cp codex/instructions.md ~/.codex/
+
+# 3. Copy CLAUDE.md to your project
+cp CLAUDE.md /your/project/path/
+```
+
+## 💻 Usage Methods
+
+### Claude Code
+
+```bash
+# Use Zhipu GLM-4.7 (Recommended for China)
+glm
+
+# Use Moonshot Kimi
+kimi
+```
+
+### Codex CLI
+
+```bash
+# Install Codex (first time only)
+npm install -g @openai/codex
+
+# Start Codex
+codex
+```
+
+## 📋 Configuration Guide
+
+### 1. CLAUDE.md - Project Rules
+
+After copying to the project root, Claude Code will automatically read and follow these rules:
+
+- ✅ Chinese responses with English technical terms
+- ✅ Code with Chinese comments
+- ✅ Beginner-friendly explanations
+- ✅ Idea → Code → Test response structure
+
+### 2. settings.json - Claude Code Configuration
+
+| Configuration | Description |
+|--------|------|
+| `permissions` | Pre-authorized common commands (git, npm, python, etc.) |
+| `alwaysThinkingEnabled` | Enable deep thinking mode |
+| `promptSuggestionEnabled` | Enable intelligent prompt suggestions |
+
+### 3. Codex config.toml - Codex Configuration
+
+| Configuration | Description |
+|--------|------|
+| `model_provider` | Default to use Zhipu GLM |
+| `approval_mode` | Approval mode, suggest for beginners |
+| `model_providers` | Multi-model support (GLM/Kimi/DeepSeek) |
+
+## 🎓 Beginner Tips
+
+### Claude Code Quick Commands
+
+| Command | Effect |
+|------|------|
+| `simple` | Get the simplest code implementation |
+| `detailed` | Get code with complete comments |
+| `explain` | Explain like teaching a beginner |
+| `optimize` | Optimize existing code |
+| `test` | Generate test code |
+
+### Common Commands
+
+```bash
+# View status in Claude Code
+/status
+
+# Switch model
+/model
+
+# Initialize project rules
+/init
+
+# Clear conversation
+/clear
+```
+
+## 🔧 Advanced Features
+
+### MCP Tool Extensions
+
+Claude Code supports extending functionality through MCP (Model Context Protocol):
+
+```bash
+# Add MCP server (example)
+claude mcp add <server-name> -s user --transport stdio -- <command>
+```
+
+### Multi-Agent Collaboration
+
+Use CodexMCP for Claude Code + Codex collaboration:
+
+```bash
+claude mcp add codex -s user --transport stdio -- uvx --from git+https://github.com/GuDaStudio/codexmcp.git codexmcp
+```
+
+## 📚 Reference Resources
+
+- [Claude Code Official Documentation](https://docs.anthropic.com/zh-CN/docs/claude-code)
+- [Zhipu GLM Configuration Documentation](https://docs.bigmodel.cn/cn/guide/develop/claude)
+- [Codex CLI Documentation](https://github.com/openai/codex)
+
+## ⚠️ Important Notes
+
+1. **API Key Security**: Do not commit API Keys to Git repository
+2. **Network Requirements**: Ensure stable internet connection
+3. **Configuration Updates**: Restart terminal after modifying configurations
+
+## 🐛 Common Issues
+
+### Q: glm/kimi command not working?
+A: Reopen terminal, or run `source ~/.zshrc`
+
+### Q: How to switch models?
+A: Type `/model` in Claude Code or use different startup commands
+
+### Q: Codex connection failed?
+A: Check if API Key environment variables are correctly set in `~/.codex/config.toml`
+
+---
+
+*Configuration Version: 2024.12 | Compatible with Claude Code 2.0+*
+
+---
+
 *配置版本: 2024.12 | 适用于 Claude Code 2.0+*
