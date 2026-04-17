@@ -1,0 +1,65 @@
+# Codex CLI 配置文件
+# 复制到 ~/.codex/config.toml
+
+# ==========================================
+# 默认模型配置
+# ==========================================
+# 使用 OpenAI 账户登录时，Codex 会自动使用内置模型系统
+# 不需要设置 model_provider，使用 /model 命令在 Codex 中切换模型
+# model_provider = "openai"  # 注释掉，让 Codex 使用内置模型
+# model = "gpt-4-turbo"      # 注释掉，在 Codex 中使用 /model 命令选择
+
+# 审批模式: "suggest" | "auto-edit" | "full-auto"
+# suggest: 需要确认每个更改 (推荐新手)
+# auto-edit: 自动应用文件更改，需确认命令 (推荐)
+# full-auto: 完全自动模式 (谨慎使用)
+approval_mode = "auto-edit"  # 自动应用文件更改，命令仍需确认
+model_reasoning_effort = "medium"  # low, medium, high - 推理努力程度
+
+# ==========================================
+# GLM 模型配置 (智谱)
+# ==========================================
+[model_providers.glm]
+name = "zhipu"
+base_url = "https://open.bigmodel.cn/api/coding/paas/v4"
+env_key = "ZHIPUAI_API_KEY"
+wire_api = "responses"  # 修复 deprecated "chat" API 警告
+
+# ==========================================
+# Kimi 模型配置 (月之暗面)
+# ==========================================
+[model_providers.kimi]
+name = "moonshot"
+base_url = "https://api.moonshot.cn/v1"
+env_key = "MOONSHOT_API_KEY"
+wire_api = "responses"  # 修复 deprecated "chat" API 警告
+
+# ==========================================
+# OpenAI 模型配置 (备用)
+# ==========================================
+[model_providers.openai]
+name = "openai"
+base_url = "https://api.openai.com/v1"
+env_key = "OPENAI_API_KEY"
+wire_api = "responses"  # 修复 deprecated "chat" API 警告
+
+# ==========================================
+# DeepSeek 模型配置
+# ==========================================
+[model_providers.deepseek]
+name = "deepseek"
+base_url = "https://api.deepseek.com/v1"
+env_key = "DEEPSEEK_API_KEY"
+wire_api = "responses"  # 修复 deprecated "chat" API 警告
+
+# ==========================================
+# 历史记录配置
+# ==========================================
+[history]
+# 历史记录持久化方式: "save-all" | "none"
+persistence = "save-all"
+# 历史记录最大轮数
+max_turns = 50
+# 历史记录保存天数
+retention_days = 30
+
