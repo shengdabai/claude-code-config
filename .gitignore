@@ -9,3 +9,10 @@ dist/
 __pycache__/
 .venv/
 target/
+
+# secret launcher scripts (purged) — recreate with placeholders only
+glm.sh
+kimi.sh
+*.key
+.env
+.env.*
